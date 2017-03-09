@@ -1,0 +1,20 @@
+@header("MyApplication"){
+   @navbar("Play Welcome Page")
+
+</head>
+<body>
+<div class="container">
+
+    <form class="container form-group" action="@routes.LogInController.logIn()" method="post">
+        <button type="submit" class="btn btn-primary btn-lg" value="login" onclick="logIn()">login</button>
+    </form>
+    <form class="container form-group" action="@routes.SignUpController.signUp()" method="post">
+    <u>Not a registered User?</u>
+        <button type="submit" class="btn btn-primary btn-lg" value="signup" >signup</button>
+    </form>
+</div>
+</body>
+
+</html>
+}
+

@@ -1,0 +1,7 @@
+function checkToBeSame(password, rePassword) {
+  var pwd = password
+  var rePwd = rePassword
+
+  if(pwd == rePwd) return true
+  else return false
+}
