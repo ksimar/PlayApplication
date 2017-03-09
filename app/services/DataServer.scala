@@ -7,7 +7,7 @@ import models.{Credentials, Name, Person}
 import play.api.cache.CacheApi
 
 trait MyServer {
-  def validatePerson(credentials: Credentials): Boolean
+  def validatePerson(credentials: Credentials): Int
   def addPerson(person: Person): Boolean
 }
 
