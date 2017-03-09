@@ -6,12 +6,12 @@ import javax.inject.Inject
 import models.{Credentials, Name, Person}
 import play.api.cache.CacheApi
 
-class DataServer @Inject()(cache: CacheApi){
-//  val myName = Name("Simar","monga",Some("kaur"))
-//  val myCredential = Credentials("simar", "simar")
-//  val person = Person(myName, myCredential, "1234567890", "female", 22, Some(List("Programming")))
-//
-//
+trait MyServer {
+  def validatePerson(credentials: Credentials): Boolean
+  def addPerson(person: Person): Boolean
+}
+
+class DataServer @Inject()(cache: CacheApi) extends MyServer{
   val dataList: List[Person] = List()
 
 
