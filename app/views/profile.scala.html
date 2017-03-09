@@ -1,10 +1,13 @@
-@header("User"){
+@(userName: String)
+
+@header(userName){
   @navbar("Welcome user!")
 
 <html>
 <body>
   <image src="images/image" alt="image couldn't be loaded"></image>
   <form action="@routes.WelcomeController.welcome()">
+    Hello @userName
     <button id="logOut" >LogOut</button>
   </form>
 </body>

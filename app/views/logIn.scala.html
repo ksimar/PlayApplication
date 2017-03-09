@@ -21,7 +21,7 @@
 <body>
 <div class="container">
 <form class="container form-group" action=" /validate " method="post">
-    @flash.get("error").getOrElse("Something went wrong")
+    @flash.get("error").getOrElse("")
     <div class="form-group">
         <label for="userId">User Id:</label>
         <input type="text" class="form-control" id="userId" name="userName">

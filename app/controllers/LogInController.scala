@@ -20,13 +20,18 @@ class LogInController @Inject()(mapping: LogInMapping, dataServer: DataServer) e
                 personData => {
                   val isValidate = dataServer.validatePerson(personData)
                   Console.println("Result of Validation: "+isValidate)
-                  if(isValidate) {
+                  if(isValidate == 0) {
                     Redirect(routes.ProfileController.profile()).withSession(
                       "username" -> personData.userName)
                   }
+                  else if(isValidate == 1){
+                    Redirect(routes.LogInController.logIn()).flashing(
+                      "error" -> "No User with this username"
+                    )
+                  }
                   else {
                     Redirect(routes.LogInController.logIn()).flashing(
-                      "error" -> "Wrong UserName or Password."
+                      "error" -> "Wrong password"
                     )
                   }
                 }

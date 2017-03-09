@@ -1,3 +1,4 @@
+@()(implicit flash: Flash)
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,77 +18,78 @@
     </nav>
 </head>
 <body>
-<form class="form-horizontal" >
+<form class="form-horizontal" action="/save" method="post">
+    @flash.get("error").getOrElse("")
     <div class="form-group">
         <label class="control-label col-sm-2" for="fName">First Name:</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" id="fName" placeholder="Enter First Name" required>
+            <input type="text" name="Name.fName" class="form-control" id="fName" placeholder="Enter First Name" required>
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-sm-2" for="mName">Middle Name:</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" id="mName" placeholder="Enter Middle Name">
+            <input type="text" class="form-control" name ="Name.mName" id="mName" placeholder="Enter Middle Name">
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-sm-2" for="lName">Last Name:</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" id="lName" placeholder="Enter Last Name" required>
+            <input type="text" class="form-control" name ="Name.lName" id="lName" placeholder="Enter Last Name" required>
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-sm-2" for="userName">User Name:</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" id="userName" placeholder="Enter User Name" required>
+            <input type="text" class="form-control" name ="Credentials.userName" id="userName" placeholder="Enter User Name" required>
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-sm-2" for="pwd">Password:</label>
         <div class="col-sm-10">
-            <input type="password" class="form-control" id="pwd" placeholder="Enter Password" required>
+            <input type="password" class="form-control" name ="Credentials.password" id="pwd" placeholder="Enter Password" required>
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-sm-2" for="repwd">Reenter password</label>
         <div class="col-sm-10">
-            <input type="password" class="form-control" id="repwd" placeholder="ReEnter Password" required>
+            <input type="password" class="form-control" name ="Credentials.password" id="repwd" placeholder="ReEnter Password" required>
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-sm-2" for="mbNumber">Mobile Number</label>
         <div class="col-sm-10">
-            <input type="text" data-validation="length numeric" maxlength="10" minlength="10" class="form-control" id="mbNumber" placeholder="Enter mobile Number">
+            <input type="text" name ="mobileNumber" data-validation="length numeric" maxlength="10" minlength="10" class="form-control" id="mbNumber" placeholder="Enter mobile Number">
         </div>
     </div>
 
     <div class="form-group">
         <label class="control-label col-sm-2" >Gender:</label>
 
-        <label><input type="radio" class="form-control" id="Male"> Male </label>
-        <label><input type="radio" class="form-control" id="Female"> Female </label>
+        <label><input type="radio" name ="gender" class="form-control" id="Male"> Male </label>
+        <label><input type="radio" name ="gender" class="form-control" id="Female"> Female </label>
         </div>
     </div>
 
     <div class="form-group">
         <label class="control-label col-sm-2" for="age">Age:</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" id="age" placeholder="Enter your age" required>
+            <input type="text" name ="age" class="form-control" id="age" placeholder="Enter your age" required>
         </div>
     </div>
 
     <div class="form-group">
         <label class="control-label col-sm-2" for="userName">Hobbies:</label>
         <div class="col-sm-10">
-            <label class="checkbox-inline"><input type="checkbox" value="">Gaming</label>
-            <label class="checkbox-inline"><input type="checkbox" value="">Singing</label>
-            <label class="checkbox-inline"><input type="checkbox" value="">Programming</label>
+            <label class="checkbox-inline"><input type="checkbox" name ="hobbies" value="">Gaming</label>
+            <label class="checkbox-inline"><input type="checkbox" name ="hobbies" value="">Singing</label>
+            <label class="checkbox-inline"><input type="checkbox" name ="hobbies" value="">Programming</label>
         </div>
     </div>
 
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-primary" onclick="checkTobeSame(pwd.value, repwd.value)">Sign Up</button>
+            <button type="submit" class="btn btn-primary" >Sign Up</button>
         </div>
     </div>
 </form>

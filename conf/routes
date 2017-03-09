@@ -29,5 +29,7 @@ GET     /signup                     controllers.SignUpController.signUp
 
 GET      /profile                   controllers.ProfileController.profile
 
+POST    /save                       controllers.SignUpController.savePerson
+
 
 
