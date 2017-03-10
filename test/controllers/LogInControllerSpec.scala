@@ -15,10 +15,21 @@ class LogInControllerSpec extends PlaySpec with MockitoSugar with Results{
       val dataServer = mock[DataServer]
       val mappingWithForm = mock[LogInMapping]
       val logInController = new LogInController(mappingWithForm, dataServer)
-      val result = logInController.logIn(FakeRequest(POST,"/login").withFormUrlEncodedBody())
+      val result = logInController.logIn(FakeRequest(POST,"/login"))
       contentType(result) mustBe Some("text/html")
       status(result) mustBe 200
       contentAsString(result) must include ("Play LogIn Page")
+    }
+
+    "validate logInDetails" in {
+      val dataServer = mock[DataServer]
+      val mappingWithForm = mock[LogInMapping]
+      val logInController = new LogInController(mappingWithForm, dataServer)
+      val result = logInController.validate(FakeRequest(POST, "/validate")
+        .withFormUrlEncodedBody(("userName","simar"),("password","simar")))
+      contentType(result) mustBe Some("text/html")
+      status(result) mustBe 200
+      contentAsString(result) must include ("simar")
     }
   }
 

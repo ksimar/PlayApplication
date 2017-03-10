@@ -6,9 +6,6 @@ import play.api.cache.CacheApi
 import play.api.mvc.{Action, Controller}
 import services.DataServer
 
-/**
-  * Created by simar on 8/3/17.
-  */
 class ProfileController @Inject()(cache: CacheApi) extends Controller {
 
   def profile = Action { implicit request =>
