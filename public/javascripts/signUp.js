@@ -4,7 +4,7 @@
                 console.log($('#fname').val())
                 console.log("clicked at signUp")
                 jsRoutes.controllers.SignUpController.addPerson($('#fname').val(),$('#uname').val(),
-                                $('#password').val(),$('#mbNumber').val(),$('#age').val()).ajax({
+                                $('#password').val(),$('#mbNumber').val()).ajax({
                             success: function(data){
                               $('#body').html(data);
                             },

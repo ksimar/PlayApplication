@@ -8,8 +8,9 @@ import services.DataServer
 
 class LogInController @Inject()( dataServer: DataServer) extends Controller {
 
-  def logIn(credentials: Credentials) = Action { implicit request =>
+  def logIn(userName: String, password: String) = Action { implicit request =>
     //Ok(views.html.logIn())
+    val credentials = Credentials(userName, password)
     val isValid = dataServer.validatePerson(credentials)
     if(isValid == 0)
       Ok(views.html.profile(credentials.userName))

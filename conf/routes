@@ -15,7 +15,7 @@ GET     /assets/*file               controllers.Assets.versioned(path="/public",
 #Route to WelcomeController showing welcome page
 GET     /welcome                    controllers.WelcomeController.welcome
 
-GET      /profile                  controllers.ProfileController.profile
+GET     /profile                    controllers.ProfileController.profile
 
 GET     /javascriptRoutes           controllers.JavascriptRoutesController.javascriptRoutes
 
@@ -24,6 +24,6 @@ GET    /signup                      controllers.WelcomeController.signUp
 
 GET    /login                       controllers.WelcomeController.logIn
 
-POST     /welcomeToFamily/*lname    controllers.SignUpController.addPerson(lname,uname,password,mbNumber,age)
+POST   /addPerson/*lname            controllers.SignUpController.addPerson(lname,uname,password,mbNumber)
 
-GET     /login/*uname               controllers.LogInController.logIn(uname)
+GET    /login/*uname                controllers.LogInController.logIn(uname, password)

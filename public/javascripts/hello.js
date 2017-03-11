@@ -6,11 +6,14 @@ $(document).ready(function(){
 
 
          $('#logIn').on("click",function(){
-         jsRoutes.controllers.WelcomeController.signUp().ajax({
+          console.log("clicked on LogIn")
+         jsRoutes.controllers.WelcomeController.logIn().ajax({
                       success: function(data){
+                       console.log("entered success")
                         $('#body').html(data);
                       },
                       error: function(){
+                      console.log("entered error")
                       $('#body').html("Oops... Something went wrong. Please try again later");
                       alert("fail")
                     }
@@ -18,7 +21,7 @@ $(document).ready(function(){
       })
 
       $('#signUp').on("click",function(){
-                jsRoutes.controllers.WelcomeController.logIn().ajax({
+                jsRoutes.controllers.WelcomeController.signUp().ajax({
                             success: function(data){
                               $('#body').html(data);
                             },
@@ -30,6 +33,6 @@ $(document).ready(function(){
                 })
       })
 
- }
+ });
 
 

@@ -27,11 +27,11 @@ class SignUpController @Inject()(db: DataServer) extends Controller {
   //          )
   //      }
 
-   def addPerson(fname: String, uname: String, password: String, mobileNumber: String, age: Int) =  {
+   def addPerson(fname: String, uname: String, password: String, mobileNumber: String) =  {
      Action {
      implicit request =>
        val credentials = Credentials(uname, password)
-       val person = Person(fname, credentials, mobileNumber, age)
+       val person = Person(fname, credentials, mobileNumber)
        if (!db.search(person.credentials.userName)) {
          db.addPerson(person)
          Ok(views.html.profile(person.credentials.userName))

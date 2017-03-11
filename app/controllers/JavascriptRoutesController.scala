@@ -12,8 +12,8 @@ class JavascriptRoutesController extends Controller{
           routes.javascript.WelcomeController.signUp,
           routes.javascript.WelcomeController.logIn,
           routes.javascript.LogInController.logIn,
-          routes.javascript.WelcomeController.welcome
-         // routes.javascript.SignUpController.addPerson
+          routes.javascript.WelcomeController.welcome,
+          routes.javascript.SignUpController.addPerson
         )
       ).as("text/javascript")
   }
