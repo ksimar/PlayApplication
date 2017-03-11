@@ -9,8 +9,11 @@ class JavascriptRoutesController extends Controller{
     implicit request =>
       Ok(
         JavaScriptReverseRouter("jsRoutes")(
-          routes.javascript.SignUpController.signUp
-
+          routes.javascript.WelcomeController.signUp,
+          routes.javascript.WelcomeController.logIn,
+          routes.javascript.LogInController.logIn,
+          routes.javascript.WelcomeController.welcome
+         // routes.javascript.SignUpController.addPerson
         )
       ).as("text/javascript")
   }

@@ -1,20 +1,15 @@
 @header("MyApplication"){
-   @navbar("Play Welcome Page")
+   @navbar("Learning Ajax")
 
-</head>
-<body>
+
+<div id="#body">
 <div class="container">
 
-    <form class="container form-group" action="@routes.LogInController.logIn()" method="post">
-        <button type="submit" class="btn btn-primary btn-lg" value="login" onclick="logIn()">login</button>
-    </form>
-    <form class="container form-group" action="@routes.SignUpController.savePerson()" method="post">
-    <u>Not a registered User?</u>
-        <button type="submit" class="btn btn-primary btn-lg" value="signup" >signup</button>
-    </form>
-</div>
-</body>
+    <button type="button" class="btn btn-primary btn-lg" value="login" id="logIn" >login</button>
+    <button type="button" class="btn btn-primary btn-lg" value="signup" id="signUp" >signup</button>
 
-</html>
+</div>
+</div>
+
 }
 

@@ -11,7 +11,7 @@ class ProfileController @Inject()(cache: CacheApi) extends Controller {
   def profile = Action { implicit request =>
     val userName = request.session.get("username").fold("notFound")(name => name)
     val user = cache.get[Person](userName)
-    val fName = user.fold("")(_.name.fName)
+    val fName = user.fold("")(_.name)
     Ok(views.html.profile(fName))
   }
 

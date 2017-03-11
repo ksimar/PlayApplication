@@ -3,17 +3,21 @@ package services
 
 import javax.inject.Inject
 
-import models.{Credentials, Name, Person}
+import models.{Credentials, Person}
 import play.api.cache.CacheApi
+
+import scala.collection.mutable.ListBuffer
 
 trait MyServer {
   def validatePerson(credentials: Credentials): Int
   def addPerson(person: Person): Boolean
+  def personData(userName: String): Option[Person]
 }
 
 class DataServer @Inject()(cache: CacheApi) extends MyServer{
-  //val dataList: List[Person] = List()
-
+  val dataList: ListBuffer[Person] = ListBuffer()
+  val cacheKey = "key"
+  cache.set(cacheKey,dataList)
 
 //  def validatePerson(credentials: Credentials): Boolean = {
 //    val list = dataList filter (data => (data.credentials.userName == credentials.userName
@@ -35,9 +39,28 @@ class DataServer @Inject()(cache: CacheApi) extends MyServer{
   }
 
   def addPerson(person: Person): Boolean = {
-    //val newList = dataList :+ person
-    cache.set(person.credentials.userName, person)
+    dataList += person
+    //cache.set(person.credentials.userName, person)
+    cache.remove(cacheKey)
+    cache.set(cacheKey, dataList)
     true
+  }
+
+  override def personData(userName: String): Option[Person] = {
+//    val cacheList = cache.get[ListBuffer[Person]](cacheKey).map(_.filter(person=> person.credentials.userName == userName))
+//    val size = cacheList.map(_.size).fold("")(len=>s"size of list is $len")
+//    cacheList.fold("not found")(person => person.toString())
+//   // val a = cacheList.map(identity)
+    val person = cache.get[ListBuffer[Person]](cacheKey).map(identity).getOrElse(ListBuffer())
+    val reqPerson = person.filter(_.credentials.userName == userName).headOption
+    reqPerson
+  }
+
+  def search(userName: String): Boolean = {
+    val person = cache.get[ListBuffer[Person]](cacheKey).map(identity).getOrElse(ListBuffer())
+    val reqPerson = person.filter(_.credentials.userName == userName)
+    if(reqPerson.isEmpty) false
+    else true
   }
 
 }

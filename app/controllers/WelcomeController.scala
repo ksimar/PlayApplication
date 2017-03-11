@@ -9,4 +9,12 @@ class WelcomeController @Inject() extends Controller {
     Ok(views.html.welcome())
   }
 
+  def signUp = Action {
+    Ok(views.html.signUp())
+  }
+
+  def logIn = Action {
+    Ok(views.html.logIn())
+  }
+
 }

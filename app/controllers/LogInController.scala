@@ -2,13 +2,19 @@ package controllers
 
 import play.api.mvc.{Action, Controller}
 import javax.inject._
+
+import models.Credentials
 import services.DataServer
 
 class LogInController @Inject()( dataServer: DataServer) extends Controller {
 
-  def logIn(userName: String) = Action { implicit request =>
+  def logIn(credentials: Credentials) = Action { implicit request =>
     //Ok(views.html.logIn())
-    
+    val isValid = dataServer.validatePerson(credentials)
+    if(isValid == 0)
+      Ok(views.html.profile(credentials.userName))
+    else
+      Ok(views.html.welcome())
   }
 
   /*def validate = Action {
