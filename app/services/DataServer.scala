@@ -1,6 +1,6 @@
 package services
 
-import java.awt.Window
+
 import javax.inject.Inject
 
 import models.{Credentials, Name, Person}
@@ -12,7 +12,7 @@ trait MyServer {
 }
 
 class DataServer @Inject()(cache: CacheApi) extends MyServer{
-  val dataList: List[Person] = List()
+  //val dataList: List[Person] = List()
 
 
 //  def validatePerson(credentials: Credentials): Boolean = {
@@ -35,7 +35,7 @@ class DataServer @Inject()(cache: CacheApi) extends MyServer{
   }
 
   def addPerson(person: Person): Boolean = {
-    val newList = dataList :+ person
+    //val newList = dataList :+ person
     cache.set(person.credentials.userName, person)
     true
   }

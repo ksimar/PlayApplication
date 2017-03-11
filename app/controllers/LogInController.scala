@@ -4,13 +4,14 @@ import play.api.mvc.{Action, Controller}
 import javax.inject._
 import services.DataServer
 
-class LogInController @Inject()(mapping: LogInMapping, dataServer: DataServer) extends Controller {
+class LogInController @Inject()( dataServer: DataServer) extends Controller {
 
-  def logIn = Action { implicit request =>
-    Ok(views.html.logIn())
+  def logIn(userName: String) = Action { implicit request =>
+    //Ok(views.html.logIn())
+    
   }
 
-  def validate = Action {
+  /*def validate = Action {
             implicit request => {
               mapping.logInForm.bindFromRequest.fold(
                 formWithErrors => {
@@ -38,5 +39,5 @@ class LogInController @Inject()(mapping: LogInMapping, dataServer: DataServer) e
               )
             }
           }
-
+*/
   }

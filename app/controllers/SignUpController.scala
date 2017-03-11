@@ -5,27 +5,27 @@ import models.{Credentials, Name, Person}
 import play.api.mvc.{Action, Controller}
 import services.DataServer
 
-class SignUpController @Inject()(mapping: Mapping)(db: DataServer) extends Controller {
+class SignUpController @Inject()(db: DataServer) extends Controller {
 
   def signUp = Action { implicit request =>
     Ok(views.html.signUp())
   }
 
-  def savePerson = Action {
-        implicit request =>
-          mapping.personForm.bindFromRequest.fold(
-            formWithErrors => {
-              Redirect(routes.SignUpController.signUp()).flashing(
-
-                "error" -> formWithErrors.toString)
-            },
-            personData => {
-              db.addPerson(personData)
-              Redirect(routes.ProfileController.profile()).withSession(
-                "username" -> personData.credentials.userName)
-            }
-          )
-      }
+//  def savePerson = Action {
+//        implicit request =>
+//          mapping.personForm.bindFromRequest.fold(
+//            formWithErrors => {
+//              Redirect(routes.SignUpController.signUp()).flashing(
+//
+//                "error" -> formWithErrors.toString)
+//            },
+//            personData => {
+//              db.addPerson(personData)
+//              Redirect(routes.ProfileController.profile()).withSession(
+//                "username" -> personData.credentials.userName)
+//            }
+//          )
+//      }
 
 
 //    def savePerson = Action {
